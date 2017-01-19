@@ -2,7 +2,6 @@ defmodule Physics.Rocketry do
   @earth %{mass: 5.972e24, radius: 6.371e6}
   @mars %{mass: 6.39e23, radius: 3.4e6}
   @moon %{mass: 7.35e22, radius: 1.738e6}
-  @newtons_constant 6.67e-11
 
   def escape_velocity(:earth), do: @earth |> escape_velocity
   def escape_velocity(:mars), do: @mars |> escape_velocity
@@ -16,7 +15,7 @@ defmodule Physics.Rocketry do
   end
 
   defp calculate_escape(%{mass: mass, radius: radius}) do
-    2 * @newtons_constant * mass / radius
+    2 * Physics.Laws.newtons_gravitational_constant * mass / radius
       |> :math.sqrt
   end
 end
