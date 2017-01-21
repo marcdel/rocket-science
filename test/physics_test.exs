@@ -23,6 +23,31 @@ defmodule PhysicsTest do
     assert ev == 0.9
   end
 
+  test "orbital speed is correct" do
+    speed = 100 |> Physics.Rocketry.orbital_speed
+    assert speed == 0
+  end
+
+  test "orbital acceleration is correct" do
+    acceleration = 100 |> Physics.Rocketry.orbital_acceleration
+    assert acceleration == 0
+  end
+
+  test "orbial term is correct" do
+    term = 100 |> Physics.Rocketry.orbital_term
+    assert term == 0
+  end
+
+  test "Orbital acceleration for earth at 100km" do
+    orbital_acc = Physics.Rocketry.orbital_acceleration(100)
+    assert orbital_acc == 9.515619587729839
+  end
+
+  test "Orbital term for 100km above earth" do
+    term = Physics.Rocketry.orbital_term(100)
+    assert (term > 4) && (term < 5) #crap fix this!
+  end
+
   test "Converter.to_light_seconds works" do
     ls2 = {:miles, 1000} |> Converter.to_light_seconds(precision: 10)
     assert 0.00536819 == ls2
@@ -42,5 +67,20 @@ defmodule PhysicsTest do
     ls1 = {:miles, 1000} |> Converter.to_light_seconds(precision: 10)
     ls2 = {:miles, 1000} |> ConverterTwo.to_light_seconds(precision: 10)
     assert ls1 == ls2
+  end
+
+  test "3600 seconds in 1 hour" do
+    hours = 3600 |> Converter.seconds_to_hours
+    assert hours == 1
+  end
+
+  test "7200 seconds in 2 hours" do
+    hours = 7200 |> Converter.seconds_to_hours
+    assert hours == 2
+  end
+
+ test "1800 seconds in 0.5 hour" do
+    hours = 1800 |> Converter.seconds_to_hours
+    assert hours == 0.5
   end
 end
