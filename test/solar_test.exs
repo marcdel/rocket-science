@@ -20,7 +20,7 @@ defmodule SolarTest do
     assert length(flares) == 8
   end
 
-  test "filters dangerous flares", %{data: flares} do
+  test "returns dangerous flares", %{data: flares} do
     d = Solar.no_eva(flares)
     assert length(d) == 3
   end
@@ -33,6 +33,20 @@ defmodule SolarTest do
   test "total flare power", %{data: flares} do
     total = Solar.total_flare_power(flares)
     assert total == 216911.7
+  end
+
+  test "flare list", %{data: flares} do
+    list = Solar.flare_list(flares)
+    assert list == [
+      %{power: 99000, is_deadly: true},
+      %{power: 58.0, is_deadly: false},
+      %{power: 12.0, is_deadly: false},
+      %{power: 3.2, is_deadly: false},
+      %{power: 836.0, is_deadly: false},
+      %{power: 2.5, is_deadly: false},
+      %{power: 72000, is_deadly: true},
+      %{power: 45000, is_deadly: true}
+    ]
   end
 
 end
