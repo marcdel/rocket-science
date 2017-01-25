@@ -9,6 +9,6 @@ defmodule Solar do
 
   def deadliest(flares) do
     Enum.map(flares, &(power(&1)))
-			|> Enum.max
+      |> Enum.max
   end
 end

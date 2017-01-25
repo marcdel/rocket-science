@@ -25,4 +25,9 @@ defmodule SolarTest do
     assert length(d) == 3
   end
 
+  test "the deadliest flare", %{data: flares} do
+    death = Solar.deadliest(flares)
+    assert death == 99000
+  end
+
 end
