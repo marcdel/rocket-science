@@ -1,5 +1,5 @@
 defmodule CalcsTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   test "cubing" do
     val = 3 |> Calcs.cubed

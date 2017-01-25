@@ -1,5 +1,5 @@
 defmodule PhysicsTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   test "escape velocity of earth is correct" do
     ev = Physics.Rocketry.escape_velocity(:earth)
@@ -25,11 +25,6 @@ defmodule PhysicsTest do
   test "Orbital acceleration for earth at 100km" do
     orbital_acc = Physics.Rocketry.orbital_acceleration(100)
     assert orbital_acc == 9.515619587729839
-  end
-
-  test "Orbital term for 100km above earth" do
-    term = Physics.Rocketry.orbital_term(100)
-    assert (term > 4) && (term < 5) #crap fix this!
   end
 
 end

@@ -1,5 +1,5 @@
 defmodule ConverterTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   test "to_light_seconds returns ... something" do
     converted = Converter.to_light_seconds({:miles, 1000}, precision: 5)
