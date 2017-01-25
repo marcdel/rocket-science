@@ -30,4 +30,9 @@ defmodule SolarTest do
     assert death == 99000
   end
 
+  test "total flare power", %{data: flares} do
+    total = Solar.total_flare_power(flares)
+    assert total == 216911.7
+  end
+
 end
